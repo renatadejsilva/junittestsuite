@@ -5,8 +5,7 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-//@SuiteClasses({ SaveAndFinishTestCase.class, OnlySaveTestCase.class, EditTestCase.class, DeleteTestCase.class })
-@SuiteClasses({ SaveAndFinishTestCase.class, OnlySaveTestCase.class})
+@SuiteClasses({ SaveAndFinishTestCase.class, OnlySaveTestCase.class, EditTestCase.class, DeleteTestCase.class })
 
 public class junittestsuite {
 
