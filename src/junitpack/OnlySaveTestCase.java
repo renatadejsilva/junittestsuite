@@ -21,14 +21,14 @@ public class OnlySaveTestCase {
 
   @Before
   public void setUp() throws Exception {
-    System.setProperty("webdriver.firefox.marionette","lib/geckodriver");
+    System.setProperty("webdriver.firefox.marionette","driver/geckodriver");
     driver = new FirefoxDriver();
     baseUrl = "http://acesso.paripassu.com.br/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
   @Test
-  public void testValidLoginTestCase() throws Exception {
+  public void testOnlySaveTestCase() throws Exception {
     driver.get(baseUrl);
 	driver.findElement(By.id("usuario")).clear();
     driver.findElement(By.id("usuario")).sendKeys("redej.silva@gmail.com");
@@ -41,9 +41,9 @@ public class OnlySaveTestCase {
     driver.findElement(By.cssSelector("a.list-group-item")).click();
     driver.findElement(By.cssSelector("a.list-group-item.list-group-item-buttom")).click();
     driver.findElement(By.xpath("//textarea[@type='text']")).clear();
-    driver.findElement(By.xpath("//textarea[@type='text']")).sendKeys("Renata de Jesus Silva");
+    driver.findElement(By.xpath("//textarea[@type='text']")).sendKeys("Teste");
     driver.findElement(By.xpath("(//textarea[@type='text'])[2]")).clear();
-    driver.findElement(By.xpath("(//textarea[@type='text'])[2]")).sendKeys("redej.silva@gmail.com");
+    driver.findElement(By.xpath("(//textarea[@type='text'])[2]")).sendKeys("teste@gmail.com");
     driver.findElement(By.xpath("//body[@id='webBody']/div/div/div[3]/div/div/div/div[2]/form/div[4]/div/div/a[2]")).click();
     driver.findElement(By.xpath("//textarea[@type='text']")).clear();
     driver.findElement(By.xpath("//textarea[@type='text']")).sendKeys("Teste");
@@ -52,6 +52,8 @@ public class OnlySaveTestCase {
     driver.findElement(By.xpath("(//textarea[@type='text'])[3]")).clear();
     driver.findElement(By.xpath("(//textarea[@type='text'])[3]")).sendKeys("Teste");
     driver.findElement(By.xpath("(//a[contains(text(),'Salvar')])[3]")).click();
+    driver.findElement(By.id("dropdownMenu2")).click();
+    driver.findElement(By.linkText("Sair")).click();
   }
 
   @After

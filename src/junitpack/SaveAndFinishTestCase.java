@@ -21,14 +21,14 @@ public class SaveAndFinishTestCase {
 
   @Before
   public void setUp() throws Exception {
-    System.setProperty("webdriver.firefox.marionette","lib/geckodriver");
+    System.setProperty("webdriver.firefox.marionette","driver/geckodriver");
     driver = new FirefoxDriver();
     baseUrl = "http://acesso.paripassu.com.br/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
   @Test
-  public void testValidLoginTestCase() throws Exception {
+  public void testSaveAndFinishTestCase() throws Exception {
     driver.get(baseUrl);
 	driver.findElement(By.id("usuario")).clear();
     driver.findElement(By.id("usuario")).sendKeys("redej.silva@gmail.com");
@@ -46,12 +46,14 @@ public class SaveAndFinishTestCase {
     driver.findElement(By.xpath("(//textarea[@type='text'])[2]")).sendKeys("redej.silva@gmail.com");
     driver.findElement(By.xpath("//body[@id='webBody']/div/div/div[3]/div/div/div/div[2]/form/div[4]/div/div/a[2]")).click();
     driver.findElement(By.xpath("//textarea[@type='text']")).clear();
-    driver.findElement(By.xpath("//textarea[@type='text']")).sendKeys("Teste");
+    driver.findElement(By.xpath("//textarea[@type='text']")).sendKeys("Gosto de estar sempre aprendendo coisas novas e trabalhar na Paripassu como QA vai exigir bastante isso de mim. \nCertamente a Paripassu me proporcionará novos desafios e, com a bagagem que tenho até aqui e meu esforço, serei capaz de atingir meus objetivos e contribuir no meu crescimento e no da empresa.");
     driver.findElement(By.xpath("(//textarea[@type='text'])[2]")).clear();
-    driver.findElement(By.xpath("(//textarea[@type='text'])[2]")).sendKeys("Teste");
+    driver.findElement(By.xpath("(//textarea[@type='text'])[2]")).sendKeys("Quero atuar nesta área pois acredito que o trabalho do QA na empresa é extramente importante e fundamental, não só na etapa da entrega do produto, mas também durante todo o processo de desenvolvimento. O sistema que será entregue ao cliente deve ser cuidadosamente testado e estar de acordo com os requisitos pré definidos. \nPara mim, a qualidade do sistema vai além do \"está  funcionando\". Gosto de seguir normas e rotinas a fim de garantir que o produto será entregue de forma consistente, intuitivo e padronizado.");
     driver.findElement(By.xpath("(//textarea[@type='text'])[3]")).clear();
-    driver.findElement(By.xpath("(//textarea[@type='text'])[3]")).sendKeys("Teste");
+    driver.findElement(By.xpath("(//textarea[@type='text'])[3]")).sendKeys("Quando me deparo com um problema, primeiramente tento manter a calma. Tento resolvê-lo. Entretanto, quando não consigo solucioná-lo, compartilho com meus colegas de trabalho.");
     driver.findElement(By.xpath("(//a[contains(text(),'Salvar e finalizar')])[2]")).click();
+    driver.findElement(By.id("dropdownMenu2")).click();
+    driver.findElement(By.linkText("Sair")).click();
   }
 
   @After

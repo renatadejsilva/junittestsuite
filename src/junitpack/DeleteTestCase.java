@@ -21,14 +21,14 @@ public class DeleteTestCase {
 
   @Before
   public void setUp() throws Exception {
-    System.setProperty("webdriver.firefox.marionette","lib/geckodriver");
+    System.setProperty("webdriver.firefox.marionette","driver/geckodriver");
     driver = new FirefoxDriver();
     baseUrl = "http://acesso.paripassu.com.br/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
   @Test
-  public void testValidLoginTestCase() throws Exception {
+  public void testDeleteTestCase() throws Exception {
     driver.get(baseUrl);
 	driver.findElement(By.id("usuario")).clear();
     driver.findElement(By.id("usuario")).sendKeys("redej.silva@gmail.com");
@@ -40,7 +40,8 @@ public class DeleteTestCase {
     driver.findElement(By.linkText("Listar aplicações de questionário")).click();
     driver.findElement(By.xpath("//body[@id='webBody']/div/div/div[3]/div/div/div/div[4]/div/table/tbody/tr/td[9]/button[3]")).click();
     driver.findElement(By.id("alertify-ok")).click();
-
+    driver.findElement(By.id("dropdownMenu2")).click();
+    driver.findElement(By.linkText("Sair")).click();
   }
 
   @After

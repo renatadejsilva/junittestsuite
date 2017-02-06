@@ -22,14 +22,14 @@ public class EditTestCase {
 
   @Before
   public void setUp() throws Exception {
-    System.setProperty("webdriver.firefox.marionette","lib/geckodriver");
+    System.setProperty("webdriver.firefox.marionette","driver/geckodriver");
     driver = new FirefoxDriver();
     baseUrl = "http://acesso.paripassu.com.br/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
   @Test
-  public void testValidLoginTestCase() throws Exception {
+  public void testEditTestCase() throws Exception {
     driver.get(baseUrl);
 	driver.findElement(By.id("usuario")).clear();
     driver.findElement(By.id("usuario")).sendKeys("redej.silva@gmail.com");
@@ -41,9 +41,9 @@ public class EditTestCase {
     driver.findElement(By.linkText("Listar aplicações de questionário")).click();
     driver.findElement(By.xpath("//body[@id='webBody']/div/div/div[3]/div/div/div/div[4]/div/table/tbody/tr/td[9]/button[2]")).click();
     driver.findElement(By.xpath("//textarea[@type='text']")).clear();
-    driver.findElement(By.xpath("//textarea[@type='text']")).sendKeys("Renata de Jesus Silva - editado");
+    driver.findElement(By.xpath("//textarea[@type='text']")).sendKeys("Teste - editado");
     driver.findElement(By.xpath("(//textarea[@type='text'])[2]")).clear();
-    driver.findElement(By.xpath("(//textarea[@type='text'])[2]")).sendKeys("teste@gmail.com");
+    driver.findElement(By.xpath("(//textarea[@type='text'])[2]")).sendKeys("editado@gmail.com");
     driver.findElement(By.xpath("//body[@id='webBody']/div/div/div[3]/div/div/div/div[2]/form/div[4]/div/div/a[2]/i")).click();
     driver.findElement(By.xpath("//textarea[@type='text']")).clear();
     driver.findElement(By.xpath("//textarea[@type='text']")).sendKeys("Teste - editado");
@@ -53,13 +53,15 @@ public class EditTestCase {
     driver.findElement(By.xpath("(//textarea[@type='text'])[3]")).sendKeys("Teste - editado");
     driver.findElement(By.xpath("(//a[contains(text(),'Salvar')])[3]")).click();
     driver.findElement(By.xpath("//body[@id='webBody']/div/div/div[3]/div/div/div/div[4]/div/table/tbody/tr/td[9]/button[2]")).click();
-    Assert.assertEquals("Renata de Jesus Silva - editado", driver.findElement(By.xpath("//textarea[@type='text']")).getAttribute("value"));    
-    Assert.assertEquals("teste@gmail.com", driver.findElement(By.xpath("(//textarea[@type='text'])[2]")).getAttribute("value"));
+    Assert.assertEquals("Teste - editado", driver.findElement(By.xpath("//textarea[@type='text']")).getAttribute("value"));    
+    Assert.assertEquals("editado@gmail.com", driver.findElement(By.xpath("(//textarea[@type='text'])[2]")).getAttribute("value"));
     driver.findElement(By.xpath("//body[@id='webBody']/div/div/div[3]/div/div/div/div[2]/form/div[4]/div/div/a[2]")).click();
     Assert.assertEquals("Teste - editado", driver.findElement(By.xpath("//textarea[@type='text']")).getAttribute("value"));
     Assert.assertEquals("Teste - editado", driver.findElement(By.xpath("(//textarea[@type='text'])[2]")).getAttribute("value"));
     Assert.assertEquals("Teste - editado", driver.findElement(By.xpath("(//textarea[@type='text'])[3]")).getAttribute("value"));    
     driver.findElement(By.cssSelector("a.mb-sm.btn.btn-default.ng-binding")).click();
+    driver.findElement(By.id("dropdownMenu2")).click();
+    driver.findElement(By.linkText("Sair")).click();
   }
 
   @After
